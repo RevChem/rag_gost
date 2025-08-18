@@ -5,4 +5,4 @@ functions.py
 notebook/
 delete.py
 *.onnx
-app/chroma/model/
+model/
