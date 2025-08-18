@@ -8,3 +8,6 @@
 model/
 pdf/
 __pycache__
+
+..bfg-report/
+bfg-1.14.0.jar
