@@ -10,12 +10,15 @@ router = APIRouter()
 
 @router.post('/ask')
 async def ask(
-    query: str,
-    category: str | None = None,
+    request: AskWithAIResponse,
     vectorstore: ChromaDatabase = Depends(get_chroma_database),
 ):
     
+    query  = request.response
+    category = request.category
+
     filter = {'category': category} if category else None
+
     results = await vectorstore.search_document(
         query  = query, filter = filter, with_score = True, k=5, 
     )
@@ -36,18 +39,19 @@ async def ask(
 
 @router.post("/ask_with_ai")
 async def ask_with_ai(
-    query: str,
-    category: str | None,
+    request: AskWithAIResponse,
     vectorstore: ChromaDatabase = Depends(get_chroma_database),
 ):
-    
+    category  = request.category
+    query = request.response
+
     filter = {'category': category} if category else None
     results = await vectorstore.search_document(
     query  = query, filter = filter, with_score = True, k=5, 
     )
     if results:
         ai_context = "\n".join([doc.page_content for doc, _ in results])
-        ai_store = AI_Settings()  
+        ai_store = ChatWithAI()  
 
         async def stream_response():
             async for chunk in ai_store.astream_response(ai_context, query):
