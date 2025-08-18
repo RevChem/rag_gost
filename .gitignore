@@ -1,8 +1,10 @@
 .env
-__pycache__
-pdf/
-functions.py
-notebook/
-delete.py
+
 *.onnx
+*.bin
+*.pt
+*.safetensors
+
 model/
+pdf/
+__pycache__
