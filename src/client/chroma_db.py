@@ -12,7 +12,7 @@ class ChromaDatabase:
     async def init(self):
         """Инициализация бд Chroma."""
         try:
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            device = settings.DEVICE
 
             embeddings = HuggingFaceEmbeddings(
                 model_name=settings.LM_MODEL_NAME,
@@ -42,9 +42,9 @@ class ChromaDatabase:
 
         try:
             if with_score:
-                results = self.store.similarity_search_with_score(query, k=k)
+                results = self.store.similarity_search_with_score(query, k=k, filter=filter)
             else:
-                results = self.store.similarity_search(query, k=k)
+                results = self.store.similarity_search(query, k=k, filter=filter)
 
             logger.debug(f'Найдено {len(results)} документов')
             return results

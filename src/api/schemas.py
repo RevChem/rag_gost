@@ -5,4 +5,4 @@ from pydantic import BaseModel
 class AskWithAIResponse(BaseModel):
     response: str
     category: str | None = None
-    provider: Literal["deepseek", "gigachat"] = "deepseek"
+    provider: Literal["deepseek", "gigachat"] | None = "deepseek"

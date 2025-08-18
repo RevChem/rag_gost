@@ -1,3 +1,4 @@
+# python -m src.test.evaluate
 import torch
 import asyncio
 from datasets import Dataset
@@ -30,7 +31,7 @@ questions = [
         "category": "мясные продукты"
     },
     {
-        "question": "Массовая доля углеводов мяса категории А",
+        "question": "Массовая доля углеводов в мясе категории А",
         "category": "мясные продукты"
     },
     {
