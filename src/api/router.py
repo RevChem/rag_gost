@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 
 from src.api.schemas import AskWithAIResponse
-from src.model.ai import AI_Settings
-from src.chroma_database.search_documents import ChromaDatabase, get_chroma_database
+from src.client.ai_chat import ChatWithAI
+from src.client.chroma_db import ChromaDatabase, get_chroma_database
 
 
 router = APIRouter()

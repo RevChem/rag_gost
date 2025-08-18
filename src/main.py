@@ -1,11 +1,11 @@
-# uvicorn app.main:app --port 8000 --host 0.0.0.0
+# uvicorn src.main:app --port 8000 --host 0.0.0.0
 # asynccontextmanager - создание асинхронных контекстных менеджеров. 
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.router import router as api_router
-from app.chroma.create_db import chroma_database
+from src.api.router import router as api_router
+from src.client.chroma_db import chroma_database
 
 
 @asynccontextmanager
