@@ -1,0 +1,8 @@
+.env
+__pycache__
+pdf/
+functions.py
+notebook/
+delete.py
+*.onnx
+app/chroma/model/
